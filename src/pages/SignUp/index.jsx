@@ -1,21 +1,39 @@
-//HOOKS
-import axios from "axios";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { signUp } from "./api";
+import { Input } from "./components/Input";
 
 export const SingUp = () => {
-  //#region State
+  //#region States
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [passwordRepeat, setPasswordRepeat] = useState();
   const [apiProgress, setApiProgress] = useState(false);
   const [successMessage, setSuccessMessage] = useState();
+  const [errors, setErrors] = useState({});
+  const [generalError, setGeneralError] = useState();
   //#endregion
 
+  useEffect(() => {
+    setErrors((lastErrors) => {
+      return { ...lastErrors, username: undefined };
+    });
+  }, [username]);
+
+  useEffect(() => {
+    setErrors((lastErrors) => {
+      return { ...lastErrors, email: undefined };
+    });
+  }, [email]);
+  useEffect(() => {
+    setErrors((lastErrors) => {
+      return { ...lastErrors, password: undefined };
+    });
+  }, [password]);
   const onSubmit = async (event) => {
-    event.preventDefault(); //The Browser declined reload operation
+    event.preventDefault();
     setSuccessMessage();
+    setGeneralError();
     setApiProgress(true);
     try {
       const response = await signUp({
@@ -24,11 +42,26 @@ export const SingUp = () => {
         password,
       });
       setSuccessMessage(response?.data?.message);
-    } catch {
+    } catch (axiosError) {
+      if (
+        axiosError?.response?.data &&
+        axiosError?.response?.data?.status === 400
+      ) {
+        setErrors(axiosError?.response?.data?.validationErrors);
+      } else {
+        setGeneralError("Unexpected error occured. Please try again");
+      }
     } finally {
       setApiProgress(false);
     }
   };
+
+  const passwordRepeatError = useMemo(() => {
+    if (password && password != passwordRepeat) {
+      return "Password mismatch";
+    }
+    return "";
+  }, [password, passwordRepeat]);
 
   return (
     <div className="container">
@@ -38,64 +71,51 @@ export const SingUp = () => {
             <h1>Sign Up</h1>
           </div>
           <div className="card-body">
-            <div className="mb-3">
-              <label for="username" className="form-label">
-                Username
-              </label>
-              <input
-                className="form-control"
-                id="username"
-                onChange={(event) => {
-                  setUsername(event.target.value);
-                }}
-              />
-            </div>
-            <div className="mb-3">
-              <label for="email" className="form-label">
-                Email
-              </label>
-              <input
-                id="email"
-                className="form-control"
-                onChange={(event) => {
-                  setEmail(event.target.value);
-                }}
-              />
-            </div>
-            <div className="mb-3">
-              <label for="password" className="form-label">
-                Password
-              </label>
-              <input
-                id="password"
-                className="form-control"
-                type="password"
-                onChange={(event) => {
-                  setPassword(event.target.value);
-                }}
-              />
-            </div>
-            <div className="mb-3">
-              <label for="passwordRepeat" className="form-label">
-                Password Repeat
-              </label>
-              <input
-                className="form-control"
-                id="passwordRepeat"
-                type="password"
-                onChange={(event) => {
-                  setPasswordRepeat(event.target.value);
-                }}
-              />
-            </div>
+            <Input
+              id="username"
+              label="Username"
+              error={errors.username}
+              onChange={(event) => {
+                setUsername(event.target.value);
+              }}
+            />
+            <Input
+              id="email"
+              label="E-mail"
+              error={errors.email}
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
+            />
+            <Input
+              id="password"
+              label="Password"
+              error={errors.password}
+              type={"password"}
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}
+            />
+            <Input
+              id="passwordRepeat"
+              label="Password Repeat"
+              error={passwordRepeatError}
+              type={"password"}
+              onChange={(event) => {
+                setPasswordRepeat(event.target.value);
+              }}
+            />
             {successMessage && (
               <div className="alert alert-success">{successMessage}</div>
+            )}
+            {generalError && (
+              <div className="alert alert-danger">{generalError}</div>
             )}
             <div className="text-center">
               <button
                 className="btn btn-primary"
                 disabled={
-                  apiProgress || (!password || password != passwordRepeat)
+                  apiProgress || !password || password != passwordRepeat
                 }
               >
                 {apiProgress && (
