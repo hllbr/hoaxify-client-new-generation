@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState,  } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { signUp } from "./api";
 import { Input } from "./components/Input";
 import { useTranslation } from "react-i18next";
-import {LanguageSelector} from "./../../shared/components/LanguageSelector"
+import { LanguageSelector } from "./../../shared/components/LanguageSelector";
 export const SingUp = () => {
   //#region States
   const [username, setUsername] = useState();
@@ -46,11 +46,12 @@ export const SingUp = () => {
       });
       setSuccessMessage(response?.data?.message);
     } catch (axiosError) {
-      if (
-        axiosError?.response?.data &&
-        axiosError?.response?.data?.status === 400
-      ) {
-        setErrors(axiosError?.response?.data?.validationErrors);
+      if (axiosError?.response?.data) {
+        if (axiosError?.response?.data?.status === 400) {
+          setErrors(axiosError?.response?.data?.validationErrors);
+        } else {
+          setGeneralError(axiosError?.response?.data?.message);
+        }
       } else {
         setGeneralError(t("Unexpected error occured. Please try again"));
       }
@@ -132,7 +133,7 @@ export const SingUp = () => {
             </div>
           </div>
         </form>
-        <LanguageSelector/>
+        <LanguageSelector />
       </div>
     </div>
   );
