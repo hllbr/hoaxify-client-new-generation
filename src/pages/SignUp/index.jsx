@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { signUp } from "./api";
 import { Input } from "./components/Input";
 import { useTranslation } from "react-i18next";
-import { LanguageSelector } from "./../../shared/components/LanguageSelector";
 export const SingUp = () => {
   //#region States
   const [username, setUsername] = useState();
@@ -133,7 +132,6 @@ export const SingUp = () => {
             </div>
           </div>
         </form>
-        <LanguageSelector />
       </div>
     </div>
   );
