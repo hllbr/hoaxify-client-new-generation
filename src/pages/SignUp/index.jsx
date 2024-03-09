@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { signUp } from "./api";
 import { Input } from "./components/Input";
 import { useTranslation } from "react-i18next";
+import { Alert } from "../../shared/components/Alert";
+import Spinner from "../../shared/components/Spinner";
 export const SingUp = () => {
   //#region States
   const [username, setUsername] = useState();
@@ -9,9 +11,9 @@ export const SingUp = () => {
   const [password, setPassword] = useState();
   const [passwordRepeat, setPasswordRepeat] = useState();
   const [apiProgress, setApiProgress] = useState(false);
-  const [successMessage, setSuccessMessage] = useState();
+  const [successMessage, setSuccessMessage] = useState("");
   const [errors, setErrors] = useState({});
-  const [generalError, setGeneralError] = useState();
+  const [generalError, setGeneralError] = useState("");
   //#endregion
 
   const { t } = useTranslation();
@@ -71,12 +73,12 @@ export const SingUp = () => {
       <div className="col-lg-6 offset-lg-3 col-sm-8 offset-sm-2">
         <form className="card" onSubmit={onSubmit}>
           <div className="text-center card-header">
-            <h1>{t("Sign Up")}</h1>
+            <h1>{t("signupPage.title")}</h1>
           </div>
           <div className="card-body">
             <Input
               id="username"
-              label={t("Username")}
+              label={t("signupPage.username")}
               error={errors.username}
               onChange={(event) => {
                 setUsername(event.target.value);
@@ -84,7 +86,7 @@ export const SingUp = () => {
             />
             <Input
               id="email"
-              label={t("E-mail")}
+              label={t("signupPage.email")}
               error={errors.email}
               onChange={(event) => {
                 setEmail(event.target.value);
@@ -92,7 +94,7 @@ export const SingUp = () => {
             />
             <Input
               id="password"
-              label={t("Password")}
+              label={t("signupPage.password")}
               error={errors.password}
               type={"password"}
               onChange={(event) => {
@@ -101,7 +103,7 @@ export const SingUp = () => {
             />
             <Input
               id="passwordRepeat"
-              label={t("Password Repeat")}
+              label={t("signupPage.passwordRepeat")}
               error={passwordRepeatError}
               type={"password"}
               onChange={(event) => {
@@ -109,10 +111,10 @@ export const SingUp = () => {
               }}
             />
             {successMessage && (
-              <div className="alert alert-success">{successMessage}</div>
+              <Alert message={successMessage} styleType="success" />
             )}
             {generalError && (
-              <div className="alert alert-danger">{generalError}</div>
+              <Alert message={generalError} styleType="danger" />
             )}
             <div className="text-center">
               <button
@@ -121,13 +123,8 @@ export const SingUp = () => {
                   apiProgress || !password || password != passwordRepeat
                 }
               >
-                {apiProgress && (
-                  <span
-                    className="spinner-border spinner-border-sm"
-                    aria-hidden="true"
-                  ></span>
-                )}{" "}
-                {t("Sign Up")}
+                {apiProgress && <Spinner size={true} styleType={"secondary"} />}{" "}
+                {t("signupPage.login")}
               </button>
             </div>
           </div>
