@@ -1,3 +1,11 @@
+import { useTranslation } from "react-i18next";
+
 export const Home = () => {
-    return <div>HOME</div>
+  const { t } = useTranslation();
+  return (
+    <>
+      <h1>{t("home.title")}</h1>
+      <h2>{t("home.welcome")}</h2>
+    </>
+  );
 };

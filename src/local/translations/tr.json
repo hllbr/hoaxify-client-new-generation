@@ -1,9 +1,16 @@
 {
-  "Sign Up": "Kayit Ol",
-  "Username": "Kullanici Adi",
-  "E-mail": "E-posta",
-  "Password": "Parola",
-  "Password Repeat": "Parola Tekrari",
-  "Password mismatch": "Parola Eşleşmiyor",
-  "Unexpected error occured. Please try again": "Beklenmedik bir hata oluştu. Lütfen tekrar deneyin."
+  "signupPage": {
+    "title": "Kayıt Ol",
+    "login": "Giris yap",
+    "username": "Kullanıcı adı",
+    "email": "E-posta",
+    "password": "Şifre",
+    "passwordRepeat": "Şifre tekrar",
+    "passwordMismatch": "Şifreler eşleşmiyor",
+    "unexpectedError": "Beklenmeyen bir hata oluştu"
+  },
+  "home": {
+    "title": "Anasayfa",
+    "welcome": "Hoşgeldiniz"
+  }
 }
