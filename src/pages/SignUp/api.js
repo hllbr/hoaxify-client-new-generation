@@ -1,12 +1,7 @@
-import axios from "axios";
-import { i18nInstance } from "../../local";
+import http from "@/lib/http";
 
 const BASE_URL = "/api/v1/users";
 
 export const signUp = (body) => {
-  return axios.post(BASE_URL, body, {
-    headers: {
-      "Accept-Language": i18nInstance.language
-    },
-  });
+  return http.post(BASE_URL, body);
 };

@@ -2,6 +2,43 @@ $primary: #818;
 // $danger: rgb(110, 182, 51);
 
 .navbar-brand {
-    color: rgb(110, 182, 51) !important;
-  }
+  color: rgb(110, 182, 51) !important;
+}
+
+
+/* General styles for scroll bars */
+::-webkit-scrollbar {
+  width: 8px;
+  /* Scroll bar width */
+}
+
+/* Vertical scroll bar styles */
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(to bottom, red, blue);
+  /* Background with red to blue transition */
+  border-radius: 4px;
+  /* Scroll bar edge radius */
+}
+
+/* Horizontal scroll bar styles */
+::-webkit-scrollbar-thumb:horizontal {
+  background-image: linear-gradient(to right, red, blue);
+  /* Background with red to blue transition */
+  border-radius: 4px;
+  /* Scroll bar edge radius */
+}
+
+/* Scroll bar path styles */
+::-webkit-scrollbar-track {
+  background: transparent;
+  /* Styles when hovering over the scroll bar */
+}
+
+/* Styles when hovering over the scroll bar */
+::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient(to top, red, blue);
+  /* Maviden kırmızıya doğru geçişli arka plan (hover durumunda) */
+}
+
+
 @import "/node_modules/bootstrap/scss/bootstrap";
