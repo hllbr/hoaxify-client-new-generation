@@ -1,6 +1,7 @@
 import App from "@/App";
 import { Home } from "@/pages/Home";
 import { SingUp } from "@/pages/SignUp";
+import { User } from "@/pages/User";
 import { Activation } from "@/pages/activation";
 import { Unexpected } from "@/pages/unexpected/unexpceted";
 import { createBrowserRouter } from "react-router-dom";
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
       {
         path: "/activation/:token",
         Component: Activation,
+        errorElement: Unexpected,
+      },
+      {
+        path: "/user/:id",
+        Component: User,
         errorElement: Unexpected,
       },
     ],

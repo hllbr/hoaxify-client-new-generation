@@ -24,5 +24,9 @@ module.exports = {
         when: "multiline",
       },
     ],
+    "react/jsx-closing-bracket-location": [
+      "error",
+      { selfClosing: "line-aligned", nonEmpty: "line-aligned" }
+    ],
   },
 };

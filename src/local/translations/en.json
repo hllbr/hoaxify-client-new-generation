@@ -12,5 +12,8 @@
   "home": {
     "title": "Home",
     "welcome": "Welcome to the home page"
+  },
+  "user": {
+    "userNotFoundError": "User not found"
   }
 }
