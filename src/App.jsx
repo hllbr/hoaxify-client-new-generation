@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { LanguageSelector } from "./shared/components/LanguageSelector";
 import { Navbar } from "./shared/components/NavBar";
 const App = () => {

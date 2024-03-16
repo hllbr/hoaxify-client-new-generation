@@ -12,5 +12,8 @@
   "home": {
     "title": "Anasayfa",
     "welcome": "Hoşgeldiniz"
+  },
+  "user": {
+    "userNotFoundError": "Kullanıcı bulunamadı"
   }
 }
