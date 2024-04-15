@@ -15,5 +15,8 @@
   },
   "user": {
     "userNotFoundError": "User not found"
+  },
+  "Login":{
+    "title":"Login"
   }
 }
