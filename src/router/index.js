@@ -1,5 +1,6 @@
 import App from "@/App";
 import { Home } from "@/pages/Home";
+import { Login } from "@/pages/Login";
 import { SingUp } from "@/pages/SignUp";
 import { User } from "@/pages/User";
 import { Activation } from "@/pages/activation";
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
       {
         path: "/user/:id",
         Component: User,
+        errorElement: Unexpected,
+      },
+      {
+        path: "/login",
+        Component: Login,
         errorElement: Unexpected,
       },
     ],

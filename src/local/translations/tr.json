@@ -15,5 +15,8 @@
   },
   "user": {
     "userNotFoundError": "Kullanıcı bulunamadı"
+  },
+  "Login": {
+    "title": "Giriş Yap"
   }
 }
