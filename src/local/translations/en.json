@@ -16,10 +16,17 @@
   "user": {
     "userNotFoundError": "User not found"
   },
-  "Login":{
-    "title":"Login"
+  "Login": {
+    "title": "Login"
   },
-  "Logout":{
-    "title":"Logout"
+  "Logout": {
+    "title": "Logout"
+  },
+  "Profile": {
+    "editProfile": "Edit Profile"
+  },
+  "UserList":{
+    "Previous": "Load Previous",
+    "Next": "Load Next"
   }
 }

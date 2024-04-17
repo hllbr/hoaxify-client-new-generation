@@ -1,10 +1,29 @@
-import Spinner from "./Spinner";
+import Spinner from './Spinner'
 
-export const Button = ({text, apiProgress, disabled}) => {
+export const Button = ({
+  text,
+  apiProgress,
+  disabled,
+  onClick,
+  className,
+}) => {
   return (
-    <button className="btn btn-primary" disabled={apiProgress || disabled}>
-      {apiProgress && <Spinner size={true} styleType={"secondary"} />}{" "}
+    <button
+      className={
+        className
+          ? className
+          : 'btn btn-primary'
+      }
+      disabled={apiProgress || disabled}
+      onClick={onClick}
+    >
+      {apiProgress && (
+        <Spinner
+          size={true}
+          styleType={'secondary'}
+        />
+      )}{' '}
       {text}
     </button>
-  );
-};
+  )
+}

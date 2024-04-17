@@ -2,6 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 import { loadUsers } from "./api";
 import Spinner from "@/shared/components/Spinner";
 import { UserListItem } from "./UserListItem";
+import { Button } from "@/shared/components/Button";
+import { useTranslation } from "react-i18next";
 
 export const UserList = () => {
   const [userPage, setUserPage] = useState({
@@ -11,7 +13,7 @@ export const UserList = () => {
     number: 0,
   });
   const [apiProgress, setApiProgress] = useState(false);
-
+  const { t } = useTranslation();
   const getUsers = useCallback(async (page) => {
     setApiProgress(true);
     try {
@@ -36,22 +38,22 @@ export const UserList = () => {
       <div className="card-footer">
         {apiProgress && <Spinner />}
         {!userPage.first && (
-          <button
+          <Button
             disabled={apiProgress}
             className="btn btn-outline-info btn-sm flaot-start"
             onClick={() => getUsers(userPage.number - 1)}
+            text={t("UserList.Previous")}
           >
-            Load Previous
-          </button>
+          </Button>
         )}
         {!userPage.last && (
-          <button
+          <Button
             disabled={apiProgress}
             className="btn btn-outline-info btn-sm float-end"
             onClick={() => getUsers(userPage.number + 1)}
+            text={t("UserList.Next")}
           >
-            Load More
-          </button>
+          </Button>
         )}
       </div>
     </div>
