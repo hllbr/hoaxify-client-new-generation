@@ -1,31 +1,40 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Input } from '@/shared/components/Input'
 import { Alert } from '@/shared/components/Alert'
-import Spinner from '@/shared/components/Spinner'
 import { Button } from '@/shared/components/Button'
 import { login } from './api'
+import { AuthContext } from '@/shared/state/context'
+import { useNavigate } from 'react-router-dom'
 
-export const Login = ({ onLoginSuccess }) => {
+export const Login = () => {
   //#region States
+  const authState = useContext(AuthContext)
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [apiProgress, setApiProgress] = useState(false)
   const [errors, setErrors] = useState({})
   const [generalError, setGeneralError] = useState('')
+  const navigate = useNavigate()
   //#endregion
 
   const { t } = useTranslation()
 
   useEffect(() => {
     setErrors(lastErrors => {
-      return { ...lastErrors, email: undefined }
+      return {
+        ...lastErrors,
+        email: undefined,
+      }
     })
   }, [email])
 
   useEffect(() => {
     setErrors(lastErrors => {
-      return { ...lastErrors, password: undefined }
+      return {
+        ...lastErrors,
+        password: undefined,
+      }
     })
   }, [password])
 
@@ -34,17 +43,32 @@ export const Login = ({ onLoginSuccess }) => {
     setGeneralError()
     setApiProgress(true)
     try {
-      const response = await login({ email, password })
-      onLoginSuccess(response.data.user)
+      const response = await login({
+        email,
+        password,
+      })
+      authState.onLoginSuccess(response.data.user)
+      navigate('/home')
     } catch (axiosError) {
       if (axiosError?.response?.data) {
-        if (axiosError?.response?.data?.status === 400) {
-          setErrors(axiosError?.response?.data?.validationErrors)
+        if (
+          axiosError?.response?.data?.status === 400
+        ) {
+          setErrors(
+            axiosError?.response?.data
+              ?.validationErrors
+          )
         } else {
-          setGeneralError(axiosError?.response?.data?.message)
+          setGeneralError(
+            axiosError?.response?.data?.message
+          )
         }
       } else {
-        setGeneralError(t('Unexpected error occured. Please try again'))
+        setGeneralError(
+          t(
+            'Unexpected error occured. Please try again'
+          )
+        )
       }
     } finally {
       setApiProgress(false)
@@ -77,7 +101,10 @@ export const Login = ({ onLoginSuccess }) => {
               }}
             />
             {generalError && (
-              <Alert message={generalError} styleType='danger' />
+              <Alert
+                message={generalError}
+                styleType='danger'
+              />
             )}
             <div className='text-center'>
               <Button
