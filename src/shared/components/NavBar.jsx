@@ -1,18 +1,15 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import logo from '@/assets/richCat.png'
-import { useDispatch, useSelector } from 'react-redux'
-import { logoutSuccess } from '../state/redux'
+import { useAuthDispatch, useAuthState } from '../state/context'
 
 export const Navbar = () => {
   const { t } = useTranslation()
-  // const authState = useAuthState()
-  // const dispatch = useAuthDispatch()
-  const authState = useSelector((store) => store.auth);
-  const dispatch = useDispatch();
-  
+  const authState = useAuthState()
+  const dispatch = useAuthDispatch()
+
   const onClickLogout = () => {
-    dispatch(logoutSuccess())
+    dispatch({ type: 'logout-success' })
   }
 
   return (
