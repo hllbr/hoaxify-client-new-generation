@@ -18,5 +18,8 @@
   },
   "Login": {
     "title": "Giriş Yap"
+  },
+  "Logout": {
+    "title": "Çıkış Yap"
   }
 }
