@@ -5,8 +5,8 @@ import { Alert } from '@/shared/components/Alert'
 import { Button } from '@/shared/components/Button'
 import { login } from './api'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { loginSuccess } from '@/shared/state/redux'
+import { useAuthDispatch } from '@/shared/state/context'
+
 
 export const Login = () => {
   //#region States
@@ -16,8 +16,7 @@ export const Login = () => {
   const [errors, setErrors] = useState({})
   const [generalError, setGeneralError] = useState('')
   const navigate = useNavigate()
-  // const dispatch = useAuthDispatch()
-  const dispatch = useDispatch()
+  const dispatch = useAuthDispatch()
   //#endregion
 
   const { t } = useTranslation()
@@ -50,11 +49,10 @@ export const Login = () => {
         password,
       })
 
-      // dispatch({
-      //   type: 'login-success',
-      //   data: response.data.user,
-      // })
-      dispatch(loginSuccess(response.data.user))
+      dispatch({
+        type: 'login-success',
+        data: response.data,
+      })
       navigate('/home')
     } catch (axiosError) {
       if (axiosError?.response?.data) {
