@@ -1,15 +1,17 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import logo from '@/assets/richCat.png'
-import { useContext } from 'react'
-import { AuthContext } from '../state/context'
+import { useAuthDispatch, useAuthState } from '../state/context'
 
 export const Navbar = () => {
   const { t } = useTranslation()
-  const authState = useContext(AuthContext)
+  const authState = useAuthState()
+  const dispatch = useAuthDispatch()
 
   const onClickLogout = () => {
-    authState.onLogoutSuccess()
+    dispatch({
+      type: 'logout-success',
+    })
   }
 
   return (
@@ -28,10 +30,7 @@ export const Navbar = () => {
                 </Link>
               </li>
               <li className='nav-item'>
-                <Link
-                  className='nav-link'
-                  to='/signup'
-                >
+                <Link className='nav-link' to='/signup'>
                   {t('signUp')}
                 </Link>
               </li>
@@ -40,10 +39,7 @@ export const Navbar = () => {
           {authState.id > 0 && (
             <>
               <li className='nav-item'>
-                <Link
-                  className='nav-link'
-                  to={`/user/${authState.id}`}
-                >
+                <Link className='nav-link' to={`/user/${authState.id}`}>
                   My Profile
                 </Link>
               </li>

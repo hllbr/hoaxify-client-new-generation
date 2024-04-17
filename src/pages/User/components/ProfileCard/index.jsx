@@ -1,15 +1,11 @@
 import defaultProfileImage from '@/assets/profile.png'
 import { Button } from '@/shared/components/Button'
-import { AuthContext } from '@/shared/state/context'
-import { useContext } from 'react'
+import { useAuthState } from '@/shared/state/context'
 import { useTranslation } from 'react-i18next'
 
-export const ProfileCard = ({
-  user,
-}) => {
-  const authState = useContext(
-    AuthContext
-  )
+// eslint-disable-next-line
+export const ProfileCard = ({ user }) => {
+  const authState = useAuthState()
   const { t } = useTranslation()
   return (
     <div className='card'>
@@ -21,15 +17,11 @@ export const ProfileCard = ({
         />
       </div>
       <div className='card-body text-center'>
-        <span className='fs-3'>
-          {user.username}
-        </span>
+        {/* eslint-disable-next-line */}
+        <span className='fs-3'>{user.username}</span>
+        {/* eslint-disable-next-line */}
         {authState.id === user.id && (
-          <Button
-            text={t(
-              'Profile.editProfile'
-            )}
-          ></Button>
+          <Button text={t('Profile.editProfile')}></Button>
         )}
       </div>
     </div>
