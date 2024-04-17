@@ -18,5 +18,8 @@
   },
   "Login":{
     "title":"Login"
+  },
+  "Logout":{
+    "title":"Logout"
   }
 }
