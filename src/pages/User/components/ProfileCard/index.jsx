@@ -1,11 +1,12 @@
 import defaultProfileImage from '@/assets/profile.png'
 import { Button } from '@/shared/components/Button'
-import { useAuthState } from '@/shared/state/context'
 import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
 
 // eslint-disable-next-line
 export const ProfileCard = ({ user }) => {
-  const authState = useAuthState()
+  // const authState = useAuthState()
+  const authState = useSelector((store) => store.auth)
   const { t } = useTranslation()
   return (
     <div className='card'>
