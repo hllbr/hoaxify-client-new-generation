@@ -19,10 +19,16 @@ const authReducer = (authState, action) => {
       setToken(action.data.token)
       return action.data.user
     case 'logout-success':
-      setToken();
+      setToken()
       return {
         id: 0,
       }
+    case 'user-update-success':
+      return {
+        ...authState,
+        username: action.data.username,
+      }
+
     default:
       throw new Error('Unsupported action type')
   }
