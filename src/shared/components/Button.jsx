@@ -1,29 +1,13 @@
 import Spinner from './Spinner'
-
-export const Button = ({
-  text,
-  apiProgress,
-  disabled,
-  onClick,
-  className,
-}) => {
+//eslint-disable-next-line
+export const Button = ({ text, apiProgress, disabled, onClick, className }) => {
   return (
     <button
-      className={
-        className
-          ? className
-          : 'btn btn-primary'
-      }
+      className={className ? className : 'btn btn-primary'}
       disabled={apiProgress || disabled}
       onClick={onClick}
     >
-      {apiProgress && (
-        <Spinner
-          size={true}
-          styleType={'secondary'}
-        />
-      )}{' '}
-      {text}
+      {apiProgress && <Spinner size={true} styleType={'secondary'} />} {text}
     </button>
   )
 }
