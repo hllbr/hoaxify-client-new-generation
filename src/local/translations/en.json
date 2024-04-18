@@ -23,9 +23,12 @@
     "title": "Logout"
   },
   "Profile": {
-    "editProfile": "Edit Profile"
+    "editProfile": "Edit Profile",
+    "save": "Save",
+    "cancel": "Cancel",
+    "username": "Username"
   },
-  "UserList":{
+  "UserList": {
     "Previous": "Load Previous",
     "Next": "Load Next"
   }

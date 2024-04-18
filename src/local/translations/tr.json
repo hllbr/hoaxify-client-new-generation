@@ -23,7 +23,10 @@
     "title": "Çıkış Yap"
   },
   "Profile": {
-    "editProfile": "Profil Düzenle"
+    "editProfile": "Profil Düzenle",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "username": "Kullanıcı Adı"
   },
   "UserList": {
     "Previous": "Önceki",
