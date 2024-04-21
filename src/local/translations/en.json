@@ -26,7 +26,8 @@
     "editProfile": "Edit Profile",
     "save": "Save",
     "cancel": "Cancel",
-    "username": "Username"
+    "username": "Username",
+    "image": "Profile Image"
   },
   "UserList": {
     "Previous": "Load Previous",

@@ -26,7 +26,8 @@
     "editProfile": "Profil Düzenle",
     "save": "Kaydet",
     "cancel": "İptal",
-    "username": "Kullanıcı Adı"
+    "username": "Kullanıcı Adı",
+    "image": "Profil Resmi"
   },
   "UserList": {
     "Previous": "Önceki",
