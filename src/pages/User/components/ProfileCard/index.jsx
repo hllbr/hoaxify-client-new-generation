@@ -10,6 +10,7 @@ export const ProfileCard = ({ user }) => {
   const { t } = useTranslation()
   const [editMode, setEditMode] = useState(false)
   const isEditButtonVisible = !editMode && authState.id === user?.id
+  const [tempImage, setTempImage] = useState()
 
   const visibileUsername =
     authState.id === user.id ? authState.username : user.username
@@ -17,7 +18,7 @@ export const ProfileCard = ({ user }) => {
   return (
     <div className='card'>
       <div className='card-header text-center'>
-        <ProfileImage width={200} />
+        <ProfileImage width={200} tempImage={tempImage} image={user.image} />
       </div>
       <div className='card-body text-center'>
         {!editMode && <span className='fs-3 d-block'>{visibileUsername}</span>}
@@ -27,7 +28,9 @@ export const ProfileCard = ({ user }) => {
             text={t('Profile.editProfile')}
           />
         )}
-        {editMode && <UserEditForm setEditMode={setEditMode} />}
+        {editMode && (
+          <UserEditForm setEditMode={setEditMode} setTempImage={setTempImage} />
+        )}
       </div>
     </div>
   )

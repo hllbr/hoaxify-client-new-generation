@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { updateUser } from './api'
 
-export function UserEditForm({ setEditMode }) {
+export function UserEditForm({ setEditMode, setTempImage }) {
   const { t } = useTranslation()
   const authState = useAuthState()
   const [newUsername, setNewUsername] = useState(authState.username)
@@ -14,10 +14,13 @@ export function UserEditForm({ setEditMode }) {
   const [errors, setErrors] = useState({})
   const [generalError, setGeneralError] = useState('')
   const dispatch = useAuthDispatch()
+  const [newImage, setNewImage] = useState()
 
   const onChangeUsername = event => {
     setNewUsername(event.target.value)
-    setErrors({})
+    setErrors(lastErrors => {
+      return { ...lastErrors, username: undefined }
+    })
   }
 
   const onCancelClick = () => {
@@ -25,18 +28,38 @@ export function UserEditForm({ setEditMode }) {
     setNewUsername(authState.username)
     setErrors({})
     setGeneralError('')
+    setNewImage()
+    setTempImage()
   }
 
-  const onSubmit = async (event) => {
+  const onSelectImage = event => {
+    setErrors(lastErrors => {
+      return { ...lastErrors, image: undefined }
+    })
+    if (event.target.files.length < 1) return
+    const file = event.target.files[0]
+    const fileReader = new FileReader()
+    fileReader.onloadend = () => {
+      const data = fileReader.result
+      setNewImage(data)
+      setTempImage(data)
+    }
+    fileReader.readAsDataURL(file)
+  }
+
+  const onSubmit = async event => {
     event.preventDefault()
     setApiProgress(true)
     setErrors({})
     setGeneralError()
     try {
-      await updateUser(authState.id, { username: newUsername })
+      const { data } = await updateUser(authState.id, {
+        username: newUsername,
+        image: newImage,
+      })
       dispatch({
         type: 'user-update-success',
-        data: { username: newUsername },
+        data: { username: data.username, image: data.image },
       })
       setEditMode(false)
     } catch (axiosError) {
@@ -62,6 +85,13 @@ export function UserEditForm({ setEditMode }) {
         label={t('Profile.username')}
         error={errors.username}
       />
+      <Input
+        label={t('Profile.image')}
+        type='file'
+        onChange={onSelectImage}
+        error={errors.image}
+      />
+
       {generalError && <Alert message={generalError} styleType='danger' />}
       <Button
         apiProgress={apiProgress}
