@@ -4,12 +4,13 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ProfileImage } from '@/shared/components/ProfileImage'
 import { UserEditForm } from './UserEditForm'
+import { UserDeleteButton } from './UserEditButton'
 
 export const ProfileCard = ({ user }) => {
   const authState = useAuthState()
   const { t } = useTranslation()
   const [editMode, setEditMode] = useState(false)
-  const isEditButtonVisible = !editMode && authState.id === user?.id
+  const isLoggedInUser = !editMode && authState.id === user?.id
   const [tempImage, setTempImage] = useState()
 
   const visibileUsername =
@@ -22,11 +23,15 @@ export const ProfileCard = ({ user }) => {
       </div>
       <div className='card-body text-center'>
         {!editMode && <span className='fs-3 d-block'>{visibileUsername}</span>}
-        {isEditButtonVisible && (
-          <Button
-            onClick={() => setEditMode(true)}
-            text={t('Profile.editProfile')}
-          />
+        {isLoggedInUser && (
+          <>
+            <Button
+              onClick={() => setEditMode(true)}
+              text={t('Profile.editProfile')}
+            />
+            <div className='d-inline m-2'></div>
+            <UserDeleteButton />
+          </>
         )}
         {editMode && (
           <UserEditForm setEditMode={setEditMode} setTempImage={setTempImage} />
