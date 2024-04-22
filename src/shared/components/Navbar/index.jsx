@@ -1,16 +1,23 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import logo from '@/assets/richCat.png'
-import { useAuthDispatch, useAuthState } from '../state/context'
-import { ProfileImage } from './ProfileImage'
+import { useAuthDispatch, useAuthState } from '../../state/context'
+import { ProfileImage } from '../ProfileImage'
+import { loqout } from './api'
 
 export const Navbar = () => {
   const { t } = useTranslation()
   const authState = useAuthState()
   const dispatch = useAuthDispatch()
 
-  const onClickLogout = () => {
-    dispatch({ type: 'logout-success' })
+  const onClickLogout = async () => {
+    try {
+      await loqout()
+    } catch (error) {
+      console.error(error)
+    } finally {
+      dispatch({ type: 'logout-success' })
+    }
   }
 
   return (

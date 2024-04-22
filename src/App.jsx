@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import { LanguageSelector } from './shared/components/LanguageSelector'
-import { Navbar } from './shared/components/NavBar'
 import { AuthenticationContext } from './shared/state/context'
+import { Navbar } from './shared/components/Navbar'
 
 const App = () => {
   return (
