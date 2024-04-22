@@ -27,7 +27,9 @@
     "save": "Save",
     "cancel": "Cancel",
     "username": "Username",
-    "image": "Profile Image"
+    "image": "Profile Image",
+    "delete": "User Delete",
+    "deleteConfirm": "Are you sure you want to delete your account?"
   },
   "UserList": {
     "Previous": "Load Previous",

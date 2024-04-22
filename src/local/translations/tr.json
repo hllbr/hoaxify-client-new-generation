@@ -27,7 +27,9 @@
     "save": "Kaydet",
     "cancel": "İptal",
     "username": "Kullanıcı Adı",
-    "image": "Profil Resmi"
+    "image": "Profil Resmi",
+    "delete": "Kullanıcıyı Sil",
+    "deleteConfirm": "Kullanıcıyı silmek istediğinizden emin misiniz?"
   },
   "UserList": {
     "Previous": "Önceki",
