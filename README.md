@@ -8,7 +8,12 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 # hoaxify-client-new-generation
 
-![image](https://github.com/hllbr/hoaxify-client-new-generation/assets/19255601/87870f2b-2d99-4085-b3e4-8ad8fa06e175)
+![image](https://github.com/hllbr/hoaxify-client-new-generation/assets/19255601/6cea2ee3-da2a-4f43-828c-d2828ed3e79f)
+![image](https://github.com/hllbr/hoaxify-client-new-generation/assets/19255601/fe0edc1f-c98b-4cb1-b22b-86f7b465a2ac)
+![image](https://github.com/hllbr/hoaxify-client-new-generation/assets/19255601/d1f492e7-abe7-4a50-87ac-d723bffd3962)
+
+![image](https://github.com/hllbr/hoaxify-client-new-generation/assets/19255601/30b906b9-5ba3-4e95-8fea-c4b692e5e31c)
+![image](https://github.com/hllbr/hoaxify-client-new-generation/assets/19255601/737a5e9b-505a-4883-afd0-325c37fb20e0)
 
 ![image](https://github.com/hllbr/hoaxify-client-new-generation/assets/19255601/d40aa885-8ba6-4cfc-bdaa-730a3f7894ae)
 
