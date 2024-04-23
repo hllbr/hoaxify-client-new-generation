@@ -17,7 +17,11 @@
     "userNotFoundError": "Kullanıcı bulunamadı"
   },
   "Login": {
-    "title": "Giriş Yap"
+    "title": "Giriş Yap",
+    "forgetPassword": "Şifremi unuttum",
+    "resetPassword": "Şifre sıfırla",
+    "reset": "Sıfırla",
+    "email": "E-posta"
   },
   "Logout": {
     "title": "Çıkış Yap"
@@ -29,7 +33,9 @@
     "username": "Kullanıcı Adı",
     "image": "Profil Resmi",
     "delete": "Kullanıcıyı Sil",
-    "deleteConfirm": "Kullanıcıyı silmek istediğinizden emin misiniz?"
+    "deleteConfirm": "Kullanıcıyı silmek istediğinizden emin misiniz?",
+    "setPassword": "Şifre Belirle"
+    
   },
   "UserList": {
     "Previous": "Önceki",

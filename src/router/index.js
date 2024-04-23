@@ -1,6 +1,8 @@
 import App from "@/App";
 import { Home } from "@/pages/Home";
 import { Login } from "@/pages/Login";
+import { PasswordResetRequest } from "@/pages/PasswordReset/Request";
+import { SetPassword } from "@/pages/PasswordReset/SetPassword";
 import { SingUp } from "@/pages/SignUp";
 import { User } from "@/pages/User";
 import { Activation } from "@/pages/activation";
@@ -36,6 +38,17 @@ const router = createBrowserRouter([
         path: "/login",
         Component: Login,
         errorElement: Unexpected,
+      },
+      {
+        path: "/password-reset/request",
+        Component: PasswordResetRequest,
+        errorElement: Unexpected,
+      },
+      {
+        path: "/password-reset/set",
+        Component: SetPassword,
+        errorElement: Unexpected,
+
       },
     ],
   },

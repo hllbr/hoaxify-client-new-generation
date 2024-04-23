@@ -4,7 +4,7 @@ import { Input } from '@/shared/components/Input'
 import { Alert } from '@/shared/components/Alert'
 import { Button } from '@/shared/components/Button'
 import { login } from './api'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuthDispatch } from '@/shared/state/context'
 
 
@@ -104,6 +104,9 @@ export const Login = () => {
                 text={t('Login.title')}
               />
             </div>
+          </div>
+          <div className="card-footer text-center">
+            <Link to="/password-reset/request">{t("Login.forgetPassword")}</Link>
           </div>
         </form>
       </div>
