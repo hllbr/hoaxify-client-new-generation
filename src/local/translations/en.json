@@ -17,7 +17,11 @@
     "userNotFoundError": "User not found"
   },
   "Login": {
-    "title": "Login"
+    "title": "Login",
+    "forgetPassword": "Forget Password",
+    "resetPassword": "Reset Password",
+    "reset": "Reset",
+    "email": "E-mail"
   },
   "Logout": {
     "title": "Logout"
@@ -29,7 +33,8 @@
     "username": "Username",
     "image": "Profile Image",
     "delete": "User Delete",
-    "deleteConfirm": "Are you sure you want to delete your account?"
+    "deleteConfirm": "Are you sure you want to delete your account?",
+    "setPassword":"Set your password"
   },
   "UserList": {
     "Previous": "Load Previous",

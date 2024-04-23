@@ -32,12 +32,12 @@ export const Navbar = () => {
             <>
               <li className='nav-item'>
                 <Link className='nav-link' to='/Login'>
-                  {t('login')}
+                  {t('Login.title')}
                 </Link>
               </li>
               <li className='nav-item'>
                 <Link className='nav-link' to='/signup'>
-                  {t('signUp')}
+                  {t('signupPage.title')}
                 </Link>
               </li>
             </>
@@ -56,7 +56,7 @@ export const Navbar = () => {
                   role='button'
                   onClick={onClickLogout}
                 >
-                  Logout
+                  {t('Logout.title')}
                 </span>
               </li>
             </>
